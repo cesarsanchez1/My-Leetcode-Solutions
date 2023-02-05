@@ -23,9 +23,15 @@ class Solution:
                 arr[count].append(b)
  
         res = ""
+    
+        check = []
         
-        for i in range(len(arr)-1, -1,-1):
-            for word in arr[i]:
+        for item in arr:
+            if item != []:
+                check.append(item)
+        
+        for i in range(len(check)-1, -1,-1):
+            for word in check[i]:
                 res += word
         return res
             
