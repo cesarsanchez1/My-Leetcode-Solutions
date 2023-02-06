@@ -6,10 +6,8 @@ class Solution:
                     temp = mat[col][row]
                     mat[col][row] = mat[row][col]
                     mat[row][col] = temp
-                
             for col in range(len(mat)):
                 mat[col].reverse()
-                
             if mat == target:
                 return True
         return False
