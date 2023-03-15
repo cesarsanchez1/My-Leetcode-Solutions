@@ -4,7 +4,7 @@ public:
     {
         string numStr = to_string(n);
 
-        for (int j = 0; j < 100; j++)
+        for (int j = 0; j < 50; j++)
         {
             int sum = 0;
             for (int i = 0; i < numStr.size(); i++)
