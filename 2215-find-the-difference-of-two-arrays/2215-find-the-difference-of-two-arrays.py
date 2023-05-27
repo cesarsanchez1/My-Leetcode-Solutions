@@ -1,24 +1,19 @@
 class Solution:
     def findDifference(self, nums1: List[int], nums2: List[int]) -> List[List[int]]:
-        unique1 = set(nums1)
-        unique2 = set(nums2)
-
-        a = list(unique1)
-        b = list(unique2)
-
-        res1 = []
-        res2 = []
-
-        for item in a:
-            if item not in unique2:
-                res1.append(item)
-
-        for item in b:
-            if item not in unique1:
-                res2.append(item)
+        uniqueArr1 = list(set(nums1))
+        uniqueArr2 = list(set(nums2))
         
-        return [res1,res2]
-            
-
-
+        set1 = set(nums1)
+        set2 = set(nums2)
+        a = []
+        b = []
+        for i in range(len(uniqueArr1)):
+            if uniqueArr1[i] not in set2:
+                a.append(uniqueArr1[i])
+        for i in range(len(uniqueArr2)):
+            if uniqueArr2[i] not in set1:
+                b.append(uniqueArr2[i])
+        return [a,b]
+                
+        
         
