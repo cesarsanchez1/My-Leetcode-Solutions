@@ -1,12 +1,14 @@
 class Solution:
     def maxOperations(self, nums: List[int], k: int) -> int:
-        counter = 0
         freq = {}
-        for item in nums:
-            diff = k-item
-            if diff in freq and freq[diff] > 0:
-                counter += 1
-                freq[diff] -= 1
+        counter = 0
+        for num in nums:
+            complement = k-num
+            if complement in freq and freq[complement]>0:
+                freq[complement]-=1
+                counter+=1
             else:
-                freq[item] = freq.get(item,0) +1
+                freq[num] = freq.get(num, 0)+1
         return counter
+
+        
