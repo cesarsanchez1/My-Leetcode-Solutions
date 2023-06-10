@@ -1,32 +1,30 @@
 class Solution:
     def numberOfSubstrings(self, s: str) -> int:
-        indx_a = -1
-        indx_b = -1
-        indx_c = -1
+        n = len(s)
+        counts = [0] * 3  # Counters for a, b, c
+        window_start = 0
+        substr_count = 0
 
-        count = 0
+        for window_end in range(n):
+            # Expand the window
+            counts[ord(s[window_end]) - ord('a')] += 1
 
-        for i, x in enumerate(s):
-            if x == 'a':
-                indx_a = i
-                print(indx_a, x)
-            elif x == 'b':
-                indx_b = i
-                print(indx_b, x)
-            else:
-                indx_c = i
-                print(indx_c, x)
-            if i > 1:
-                count += min([indx_a, indx_b, indx_c]) + 1
+            # Shrink the window until it no longer contains all characters
+            while all(counts):
+                # Count the valid substrings
+                substr_count += n-window_end
+                # Shrink the window
+                counts[ord(s[window_start]) - ord('a')] -= 1
+                window_start += 1
 
-        return count
-            
-            
+        return substr_count
+                
+                
 
 
 
-            
-            
+                
+                
 
 
 
