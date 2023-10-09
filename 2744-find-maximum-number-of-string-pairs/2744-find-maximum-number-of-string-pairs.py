@@ -1,8 +1,16 @@
 class Solution:
     def maximumNumberOfStringPairs(self, words: List[str]) -> int:
-        counter = 0
-        for i in range(len(words)):
-            for j in range(i+1, len(words)):
-                if len(words[i]) == len(words[j]) and words[i] == words[j][::-1]:
-                    counter+=1
-        return counter
+        reversedWords = {}
+        maxPairs = 0
+        
+        for word in words:
+            reverse = word[::-1]
+            
+            if reverse in reversedWords and reversedWords[reverse]>0:
+                maxPairs += 1
+                reversedWords[reverse] -= 1
+            else:
+                reversedWords[word] = reversedWords.get(word, 0) + 1
+            
+        return maxPairs
+            
