@@ -5,7 +5,6 @@ class Solution:
         res = ""
 
         j = 0
-        print(chars)
 
         for letter in chars:
             if stack and letter != stack[-1]:
@@ -24,7 +23,7 @@ class Solution:
                     
                 stack = []
             stack.append(letter)
-        del chars[-1]
+        #del chars[-1]
         
         return j
 
