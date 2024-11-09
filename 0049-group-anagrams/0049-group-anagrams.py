@@ -1,31 +1,26 @@
 class Solution:
     def groupAnagrams(self, strs: List[str]) -> List[List[str]]:
         
-        arr = []
-        res = []
-        
-        dictionary = {}
-        tupleSet = set()
+        freq = {}
         
         for word in strs:
-            temp = [0]*26   
-            
+            temp = [0]*26
             for letter in word:
-                temp[ord(letter)-ord('a')]+=1
+                temp[ord('a')-ord(letter)]+=1
             
             tupleTemp = tuple(temp)
-            tupleSet.add(tupleTemp)
             
-            if tupleTemp in dictionary:
-                dictionary[tupleTemp].append(word)
+            if tupleTemp in freq:
+                freq[tupleTemp].append(word)
             else:
-                dictionary[tupleTemp] = [word]
+                freq[tupleTemp] = [word]
                 
-            arr.append(tupleTemp)
+        result = []
+        for item in freq.values():
+            result.append(item)
         
-        for item in tupleSet:
-            res.append(dictionary[item])
+        return result
             
-        return res
-        
+            
+            
                 
